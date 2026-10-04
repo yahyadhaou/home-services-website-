@@ -1,0 +1,337 @@
+{
+  "client/01": {
+    "w": 444,
+    "h": 960,
+    "theme": "light"
+  },
+  "client/02": {
+    "w": 444,
+    "h": 960,
+    "theme": "dark"
+  },
+  "client/03": {
+    "w": 444,
+    "h": 960,
+    "theme": "dark"
+  },
+  "client/04": {
+    "w": 444,
+    "h": 960,
+    "theme": "dark"
+  },
+  "client/05": {
+    "w": 444,
+    "h": 960,
+    "theme": "dark"
+  },
+  "client/06": {
+    "w": 444,
+    "h": 960,
+    "theme": "dark"
+  },
+  "client/07": {
+    "w": 444,
+    "h": 960,
+    "theme": "dark"
+  },
+  "client/08": {
+    "w": 444,
+    "h": 960,
+    "theme": "dark"
+  },
+  "client/09": {
+    "w": 444,
+    "h": 960,
+    "theme": "dark"
+  },
+  "client/10": {
+    "w": 444,
+    "h": 960,
+    "theme": "light"
+  },
+  "client/11": {
+    "w": 444,
+    "h": 960,
+    "theme": "dark"
+  },
+  "client/12": {
+    "w": 444,
+    "h": 960,
+    "theme": "dark"
+  },
+  "client/13": {
+    "w": 444,
+    "h": 960,
+    "theme": "dark"
+  },
+  "client/14": {
+    "w": 444,
+    "h": 960,
+    "theme": "dark"
+  },
+  "client/15": {
+    "w": 444,
+    "h": 960,
+    "theme": "light"
+  },
+  "client/16": {
+    "w": 444,
+    "h": 960,
+    "theme": "dark"
+  },
+  "client/17": {
+    "w": 444,
+    "h": 960,
+    "theme": "dark"
+  },
+  "client/18": {
+    "w": 444,
+    "h": 960,
+    "theme": "dark"
+  },
+  "client/19": {
+    "w": 444,
+    "h": 960,
+    "theme": "light"
+  },
+  "client/20": {
+    "w": 444,
+    "h": 960,
+    "theme": "dark"
+  },
+  "client/21": {
+    "w": 444,
+    "h": 960,
+    "theme": "dark"
+  },
+  "client/22": {
+    "w": 444,
+    "h": 960,
+    "theme": "dark"
+  },
+  "client/23": {
+    "w": 444,
+    "h": 960,
+    "theme": "dark"
+  },
+  "client/24": {
+    "w": 444,
+    "h": 960,
+    "theme": "dark"
+  },
+  "client/25": {
+    "w": 444,
+    "h": 960,
+    "theme": "dark"
+  },
+  "client/26": {
+    "w": 444,
+    "h": 960,
+    "theme": "dark"
+  },
+  "client/27": {
+    "w": 444,
+    "h": 960,
+    "theme": "dark"
+  },
+  "client/28": {
+    "w": 444,
+    "h": 960,
+    "theme": "dark"
+  },
+  "client/29": {
+    "w": 444,
+    "h": 960,
+    "theme": "light"
+  },
+  "client/30": {
+    "w": 444,
+    "h": 960,
+    "theme": "light"
+  },
+  "client/31": {
+    "w": 444,
+    "h": 960,
+    "theme": "dark"
+  },
+  "client/32": {
+    "w": 444,
+    "h": 960,
+    "theme": "dark"
+  },
+  "client/33": {
+    "w": 444,
+    "h": 960,
+    "theme": "dark"
+  },
+  "client/34": {
+    "w": 444,
+    "h": 960,
+    "theme": "dark"
+  },
+  "client/35": {
+    "w": 444,
+    "h": 960,
+    "theme": "dark"
+  },
+  "client/36": {
+    "w": 720,
+    "h": 1558,
+    "theme": "dark"
+  },
+  "client/37": {
+    "w": 720,
+    "h": 1558,
+    "theme": "dark"
+  },
+  "manager/01": {
+    "w": 444,
+    "h": 960,
+    "theme": "dark"
+  },
+  "manager/02": {
+    "w": 444,
+    "h": 960,
+    "theme": "dark"
+  },
+  "manager/03": {
+    "w": 444,
+    "h": 960,
+    "theme": "dark"
+  },
+  "manager/04": {
+    "w": 444,
+    "h": 960,
+    "theme": "dark"
+  },
+  "manager/05": {
+    "w": 444,
+    "h": 960,
+    "theme": "dark"
+  },
+  "manager/06": {
+    "w": 444,
+    "h": 960,
+    "theme": "light"
+  },
+  "manager/07": {
+    "w": 444,
+    "h": 960,
+    "theme": "light"
+  },
+  "manager/08": {
+    "w": 444,
+    "h": 960,
+    "theme": "dark"
+  },
+  "manager/09": {
+    "w": 444,
+    "h": 960,
+    "theme": "dark"
+  },
+  "manager/10": {
+    "w": 444,
+    "h": 960,
+    "theme": "light"
+  },
+  "manager/11": {
+    "w": 444,
+    "h": 960,
+    "theme": "dark"
+  },
+  "manager/12": {
+    "w": 444,
+    "h": 960,
+    "theme": "dark"
+  },
+  "manager/13": {
+    "w": 444,
+    "h": 960,
+    "theme": "dark"
+  },
+  "manager/14": {
+    "w": 444,
+    "h": 960,
+    "theme": "dark"
+  },
+  "coworker/01": {
+    "w": 444,
+    "h": 960,
+    "theme": "light"
+  },
+  "coworker/02": {
+    "w": 444,
+    "h": 960,
+    "theme": "light"
+  },
+  "coworker/03": {
+    "w": 444,
+    "h": 960,
+    "theme": "light"
+  },
+  "coworker/04": {
+    "w": 444,
+    "h": 960,
+    "theme": "light"
+  },
+  "admin/a-booking": {
+    "w": 1600,
+    "h": 1000,
+    "theme": "light"
+  },
+  "admin/a-bookings": {
+    "w": 1600,
+    "h": 1000,
+    "theme": "light"
+  },
+  "admin/a-clients": {
+    "w": 1600,
+    "h": 1000,
+    "theme": "light"
+  },
+  "admin/a-companies": {
+    "w": 1600,
+    "h": 1000,
+    "theme": "light"
+  },
+  "admin/a-company": {
+    "w": 1600,
+    "h": 1000,
+    "theme": "light"
+  },
+  "admin/a-independents": {
+    "w": 1600,
+    "h": 1000,
+    "theme": "light"
+  },
+  "admin/a-login": {
+    "w": 1600,
+    "h": 1000,
+    "theme": "light"
+  },
+  "admin/a-mobile-overview": {
+    "w": 1170,
+    "h": 2532,
+    "theme": "light"
+  },
+  "admin/a-overview": {
+    "w": 1600,
+    "h": 1000,
+    "theme": "light"
+  },
+  "admin/a-payments": {
+    "w": 1600,
+    "h": 1000,
+    "theme": "light"
+  },
+  "admin/a-reviews": {
+    "w": 1600,
+    "h": 1000,
+    "theme": "light"
+  },
+  "admin/a-workers": {
+    "w": 1600,
+    "h": 1000,
+    "theme": "light"
+  }
+}

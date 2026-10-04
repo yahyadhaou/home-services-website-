@@ -1,0 +1,156 @@
+@import "tailwindcss";
+
+/* Design tokens. Dark is the default; [data-theme="light"] overrides it. */
+:root {
+  --bg: #070e1a;
+  --bg-soft: #0b1627;
+  --surface: #0f1d33;
+  --surface-2: #14274a;
+  --border: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.18);
+  --fg: #f1f5fb;
+  --fg-muted: #a9b9d0;
+  --fg-faint: #7389a8;
+  --cyan: #5adbff;
+  --cyan-ink: #5adbff;
+  --amber: #ffb020;
+  --amber-ink: #ffb020;
+  --indigo: #8b90ff;
+  --indigo-ink: #8b90ff;
+  --accent: var(--cyan);
+  --on-accent: #06121f;
+  --shadow: 0 30px 70px -30px rgba(0, 0, 0, 0.7);
+  --hero-glow-1: rgba(90, 219, 255, 0.16);
+  --hero-glow-2: rgba(139, 144, 255, 0.14);
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --bg: #f5f8fc;
+  --bg-soft: #eaf0f8;
+  --surface: #ffffff;
+  --surface-2: #eef3fa;
+  --border: rgba(15, 23, 42, 0.1);
+  --border-strong: rgba(15, 23, 42, 0.2);
+  --fg: #0b1b2e;
+  --fg-muted: #475569;
+  --fg-faint: #64748b;
+  --cyan-ink: #0a7ea4;
+  --amber-ink: #a45f00;
+  --indigo-ink: #4b4fd6;
+  --on-accent: #06121f;
+  --shadow: 0 30px 60px -30px rgba(15, 23, 42, 0.35);
+  --hero-glow-1: rgba(10, 126, 164, 0.14);
+  --hero-glow-2: rgba(75, 79, 214, 0.1);
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-soft: var(--bg-soft);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-faint: var(--fg-faint);
+  --color-cyan: var(--cyan);
+  --color-cyan-ink: var(--cyan-ink);
+  --color-amber: var(--amber);
+  --color-amber-ink: var(--amber-ink);
+  --color-indigo: var(--indigo);
+  --color-indigo-ink: var(--indigo-ink);
+  --color-accent: var(--accent);
+  --font-display: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 84px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+::selection {
+  background: var(--cyan);
+  color: #06121f;
+}
+
+:focus-visible {
+  outline: 2px solid var(--cyan-ink);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Scroll reveal (see components/ui/Reveal) */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--d, 0ms);
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--r, 0deg));
+  }
+  50% {
+    transform: translateY(-10px) rotate(var(--r, 0deg));
+  }
+}
+.float {
+  animation: float 7s ease-in-out infinite;
+  animation-delay: var(--fd, 0s);
+}
+
+.thumb-rail {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+
+.grid-bg {
+  background-image: linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse at 50% 30%, #000 20%, transparent 70%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .float {
+    animation: none;
+  }
+}
+
+/* Grid items may shrink below their content width (tables, phone rows),
+   so single-column mobile layouts never overflow the viewport. */
+.grid > * {
+  min-width: 0;
+}

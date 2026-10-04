@@ -14,7 +14,7 @@ const field =
   "w-full rounded-xl border border-border-strong bg-bg-soft px-4 py-3 text-[0.95rem] text-fg placeholder:text-fg-faint outline-none transition focus:border-cyan-ink focus:ring-2 focus:ring-cyan-ink/25 aria-[invalid=true]:border-[#ff6b5b]";
 
 export function Contact() {
-  const { c } = usePrefs();
+  const { c, locale } = usePrefs();
   const t = c.contact;
   const f = t.form;
 
@@ -32,6 +32,7 @@ export function Contact() {
       company: String(fd.get("company") ?? "").trim(),
       interest: String(fd.get("interest") ?? "pilot"),
       message: String(fd.get("message") ?? "").trim(),
+      lang: locale,
       consent: fd.get("consent") === "on",
       website: String(fd.get("website") ?? ""),
     };

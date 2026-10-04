@@ -1,6 +1,6 @@
 # HomeServices Showcase
 
-The public showroom website for the HomeServices platform: an interactive gallery of every real app screen, the story behind the product, the six pitch PDFs for download, and a contact form that delivers by e-mail through [Resend](https://resend.com).
+The public showroom website for the HomeServices platform: an interactive gallery of every real app screen, the story behind the product, the six pitch PDFs for download, and a bilingual contact form that delivers by e-mail through Gmail.
 
 Built with **Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS 4**. English and German, dark and light theme, responsive from phone to desktop.
 
@@ -17,35 +17,41 @@ Built with **Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS 4
 | Trust | Security and engineering facts, technology stack |
 | Vision | AI roadmap (clearly labelled "not yet built") and release roadmap |
 | Downloads | 3 pitch decks + 3 executive summaries, a ZIP of all six, and the logo kit |
-| Contact | Validated form → `POST /api/contact` → Resend |
+| Contact | Validated form → `POST /api/contact` → Gmail: full details to the owner, confirmation to the visitor in their language |
 
 ## Run it
 
 ```bash
 npm install
-cp .env.example .env.local   # add your Resend key
+cp .env.example .env.local   # add the Gmail app password
 npm run dev                  # http://localhost:3000
 npm run build && npm start   # production
 ```
 
-## Contact form and Resend
+## Contact form (Gmail)
 
-`src/app/api/contact/route.ts` validates the request (Zod), blocks bots with a honeypot field, applies a best-effort rate limit (5 messages per IP per 10 minutes), escapes all user input in the HTML e-mail, and sends through Resend with `replyTo` set to the visitor — so replying in your mail client answers them directly.
+`src/app/api/contact/route.ts` validates the request (Zod), blocks bots with a honeypot field, applies a best-effort rate limit (5 messages per IP per 10 minutes) and sends **two e-mails** through Gmail SMTP (nodemailer):
+
+1. **To the owner** — every field (name, e-mail, company, interest, message, and the language the visitor chose), with `reply-to` set to the visitor so a normal reply answers them directly.
+2. **To the visitor** — a confirmation in the language they were viewing the site in (English or German), signed by Yahya, with a link to the pitch documents. It never echoes the visitor's message text, so the form cannot be used to send arbitrary content to a third party's address.
+
+If the owner's e-mail fails, the visitor sees an error. If only the confirmation fails, the message still counts as delivered.
 
 | Variable | Purpose |
 |---|---|
-| `RESEND_API_KEY` | Required. Create it at resend.com → API Keys. Server-side only. |
-| `CONTACT_TO_EMAIL` | Recipient. Defaults to `dhaou.yahya98@gmail.com`. |
-| `CONTACT_FROM_EMAIL` | Sender. Defaults to `HomeServices Showcase <onboarding@resend.dev>`. |
+| `GMAIL_USER` | The Gmail account that sends and, by default, receives. |
+| `GMAIL_APP_PASSWORD` | A Google **app password** (not the account password). Create one at myaccount.google.com/apppasswords — requires 2-step verification. Spaces are ignored. |
+| `CONTACT_TO_EMAIL` | Optional. Deliver to another inbox. |
+| `NEXT_PUBLIC_SITE_URL` | Optional. Public URL for the link in the confirmation (Netlify provides `URL` itself). |
 
-**About the sender address:** without a verified domain, Resend only allows `onboarding@resend.dev` as the sender and only delivers to the e-mail address of your own Resend account — which is exactly what this site needs if you sign up to Resend with `dhaou.yahya98@gmail.com`. To send from your own domain, verify it in Resend and set `CONTACT_FROM_EMAIL`.
+Keep the real values in `.env.local` (git-ignored) and in Netlify's environment variables — never in the code. If you ever expose the app password, revoke it in your Google account and create a new one.
 
-If the key is missing the API answers `503` and the form shows a friendly message pointing to the direct e-mail address.
+If the variables are missing the API answers `503` and the form shows a friendly message pointing to the direct e-mail address.
 
 ## Deploy to Netlify
 
 1. Push this folder to a Git repository and import it in Netlify (the included `netlify.toml` and Netlify's Next.js support do the rest).
-2. In **Site configuration → Environment variables** add `RESEND_API_KEY` (and optionally the two others).
+2. In **Site configuration → Environment variables** add `GMAIL_USER` and `GMAIL_APP_PASSWORD`.
 3. Deploy. Test the form once with a real message.
 
 ## Updating content

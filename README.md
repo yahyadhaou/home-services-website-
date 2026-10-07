@@ -1,4 +1,4 @@
-# HomeServices Showcase 
+# HomeServices Showcase
 
 The public showroom website for the HomeServices platform: an interactive gallery of every real app screen, the story behind the product, the six pitch PDFs for download, and a bilingual contact form that delivers by e-mail through Gmail.
 

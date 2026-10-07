@@ -11,6 +11,7 @@ import { Trust, Vision } from "@/components/TrustVision";
 import { Downloads, type FileSizes } from "@/components/Downloads";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
+import { SITE_URL } from "@/lib/site";
 
 // File sizes come from the files actually shipped in /public/downloads.
 const readSizes = (): FileSizes => {
@@ -24,9 +25,30 @@ const readSizes = (): FileSizes => {
   return out;
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      name: "HomeServices",
+      url: SITE_URL,
+      logo: `${SITE_URL}/brand/homeservices-logo-mark.png`,
+      email: "dhaou.yahya98@gmail.com",
+      founder: { "@type": "Person", name: "Yahya Dhaou" },
+    },
+    {
+      "@type": "WebSite",
+      name: "HomeServices",
+      url: SITE_URL,
+      inLanguage: ["en", "de"],
+    },
+  ],
+};
+
 export default function Home() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Header />
       <main>
         <Hero />

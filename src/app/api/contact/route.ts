@@ -37,7 +37,7 @@ const tooMany = (ip: string): boolean => {
   }
   recent.push(now);
   hits.set(ip, recent);
-  if (hits.size > 5000) hits.clear(); 
+  if (hits.size > 5000) hits.clear(); // keep memory bounded
   return false;
 };
 

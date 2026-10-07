@@ -4,6 +4,7 @@ import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { PrefsProvider, type Theme } from "@/components/PrefsProvider";
 import { DEFAULT_LOCALE, getContent, isLocale } from "@/content";
+import { SITE_URL } from "@/lib/site";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const jakarta = Plus_Jakarta_Sans({
@@ -26,15 +27,29 @@ export async function generateMetadata(): Promise<Metadata> {
   const { locale } = await readPrefs();
   const { meta } = getContent(locale);
   return {
-    metadataBase: new URL(process.env.URL ?? process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3200"),
+    metadataBase: new URL(SITE_URL),
+    applicationName: "HomeServices",
+    keywords: ["home services app", "HomeServices", "plumber booking app", "craft businesses software", "Handwerker App", "Haushaltsservices", "marketplace", "DACH"],
+    alternates: { canonical: "/" },
+    robots: { index: true, follow: true },
+    // Google Search Console ownership check (public by design).
+    verification: { google: "2GVJPLk_28sduIE0I8eU07zD0SyLyrott9A2MvzXujs" },
     title: meta.title,
     description: meta.description,
     icons: { icon: "/brand/homeservices-logo-mark.svg" },
     openGraph: {
       title: meta.title,
       description: meta.description,
-      images: ["/covers/Client-Pitch-Deck.webp"],
+      url: "/",
+      siteName: "HomeServices",
+      images: [{ url: "/covers/Client-Pitch-Deck.webp", width: 960, height: 540, alt: "HomeServices client app pitch deck" }],
       type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: meta.title,
+      description: meta.description,
+      images: ["/covers/Client-Pitch-Deck.webp"],
     },
   };
 }

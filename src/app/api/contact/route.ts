@@ -1,5 +1,6 @@
 import nodemailer from "nodemailer";
 import { z } from "zod";
+import { runtimeEnv } from "@/lib/env";
 import { oneLine, ownerMail, visitorMail, type ContactRequest } from "@/lib/contact-mail";
 
 // Contact form → Gmail (SMTP with an app password).
@@ -48,9 +49,9 @@ const clientIp = (req: Request): string =>
 const json = (body: Record<string, unknown>, status: number) => Response.json(body, { status });
 
 export async function POST(request: Request) {
-  const user = process.env.GMAIL_USER;
+  const user = runtimeEnv("GMAIL_USER");
   // Google shows app passwords in groups of four; the spaces are not part of it.
-  const pass = process.env.GMAIL_APP_PASSWORD?.replace(/\s+/g, "");
+  const pass = runtimeEnv("GMAIL_APP_PASSWORD")?.replace(/\s+/g, "");
   if (!user || !pass) return json({ ok: false, error: "unavailable" }, 503);
 
   let raw: unknown;
@@ -71,8 +72,8 @@ export async function POST(request: Request) {
   if (tooMany(clientIp(request))) return json({ ok: false, error: "limited" }, 429);
 
   const data: ContactRequest = { ...rest, name: oneLine(rest.name), company: oneLine(rest.company) };
-  const to = process.env.CONTACT_TO_EMAIL || user;
-  const siteUrl = process.env.URL ?? process.env.NEXT_PUBLIC_SITE_URL ?? null;
+  const to = runtimeEnv("CONTACT_TO_EMAIL") || user;
+  const siteUrl = runtimeEnv("URL") ?? runtimeEnv("NEXT_PUBLIC_SITE_URL") ?? null;
   const from = `Yahya Dhaou | HomeServices <${user}>`;
 
   const transport = nodemailer.createTransport({ service: "gmail", auth: { user, pass } });
